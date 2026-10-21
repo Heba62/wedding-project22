@@ -37,8 +37,6 @@
 </head>
 
 <body class="no-scroll">
-    <!-- حاوية القلوب المتساقطة -->
-    <!-- <div id="hearts-container"></div> -->
 
     <!-- صفحة الترحيب الأوليّة -->
     <div id="welcome-overlay" class="welcome-overlay curtain" onclick="enterInvitation()">
@@ -53,32 +51,14 @@
 
     <div class="wedding">
         <!-- Slide 1 -->
-         <div class="contain reveal">
-        <div class="contain s1">
-            <div class="slide-1">
-                <div class="video">
-                    <!-- <video src="https://media.base44.com/videos/public/6966e1f30fa9fbe508239391/9384daf1e_13.mp4" autoplay muted loop playsinline></video>
-                <div class="video-overlay"></div> -->
-                </div>
-                <!-- <div class="flower-container">
+        <div class="contain reveal">
+            <div class="contain s1">
+                <div class="slide-1">
 
-        <div class="petal p1"></div>
-        <div class="petal p2"></div>
-        <div class="petal p3"></div>
-        <div class="petal p4"></div>
-        <div class="petal p5"></div>
-        <div class="petal p6"></div>
-        <div class="petal p7"></div>
-        <div class="petal p8"></div>
-
-        <div class="flower-core">
-            <div class="core-texture"></div>
-        </div>
-    </div> -->
-                <div class="content reveal">
-                    <p class="cover-label">دعوة زفاف</p>
-                    <img class="monogram" src="./monogram.png" alt="ع م">
-                    <div class="timeWedding">
+                    <div class="content reveal">
+                        <p class="cover-label">دعوة زفاف</p>
+                        <img class="monogram" src="./monogram.png" alt="ع م">
+                        <!-- <div class="timeWedding">
                         <div>
                             <div class="icon"><i class="bi bi-calendar2-heart"></i></div>
                             <p>السبت</p>
@@ -89,10 +69,10 @@
                             <p>الساعة 7</p>
                             <p>مساءً</p>
                         </div>
+                    </div> -->
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
         <!-- Slide 2 -->
@@ -134,11 +114,28 @@
                 <div>
                     <p class="closing">بحضوركم تكتمل أفراحنا</p>
                 </div>
-                <div class="notice">
+                <!-- <div class="notice">
                     <p><strong>تنويه | جنّة الأطفال منازلهم <i class="bi bi-heart-fill heart-ico"></i></strong><br>
                         فرحتنا بكم تحلى، وبراحتكم تكمل ليالينا،
                         والأطفال جنّتهم دارهم، ولكم زينة أفراحنا.<br>
                         نرجو عدم اصطحاب الأطفال منعاً للإحراج، علماً بوجود طاقم مختص عند المدخل لتنظيم الدخول.</p>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide-20">
+            <div class="contain reveal">
+                <div class="notice">
+                    <p style="font-size: 20px;"><strong style="font-size: 30px;">تنويه | جنّة الأطفال منازلهم <i
+                                class="bi bi-heart-fill heart-ico"></i></strong><br><br>
+                        <img width="50px" src="./d36e3370-6552-4471-8a39-7e14152c8889-removebg-preview.png" alt="">
+                        <br>
+                        <br>
+                        فرحتنا بكم تحلى، وبراحتكم تكمل ليالينا،
+                        والأطفال جنّتهم دارهم، ولكم زينة أفراحنا.<br>
+                        نرجو عدم اصطحاب الأطفال منعاً للإحراج، علماً بوجود طاقم مختص عند المدخل لتنظيم الدخول.
+                    </p>
                 </div>
             </div>
         </div>
@@ -212,9 +209,6 @@
                     <button class="action-btn" onclick="addToCalendar()">
                         <i class="bi bi-calendar-plus"></i> احفظ الموعد
                     </button>
-                    <!-- <button class="action-btn" data-bs-toggle="modal" data-bs-target="#rsvpModal">
-                        <i class="bi bi-check2-circle"></i> تأكيد الحضور (RSVP)
-                    </button> -->
                 </div>
             </div>
 
@@ -223,7 +217,7 @@
         <div class="slide-4 slide-countdown">
             <div class="contain reveal">
                 <div class="imgCorner corner-right sm"><img src="./bouquet-2.png" alt=""></div>
-                                <div class="countdown-container">
+                <div class="countdown-container">
                     <h3>العدّ التنازلي لحفل الزفاف</h3>
                     <div class="countdown-timer">
                         <div class="time-box"><span id="days">00</span><span class="label">أيام</span></div>
@@ -239,7 +233,7 @@
         <div class="slide-3">
             <div class="contain reveal">
                 <div class="imgCorner corner-left sm"><img src="./bouquet-3.png" alt=""></div>
-                                <p class="section-title">الموقع</p>
+                <p class="section-title">الموقع</p>
                 <p class="venue-name">قاعة البرستيج</p>
                 <p class="venue-area">الخليبية</p>
                 <iframe
@@ -260,7 +254,7 @@
         <div class="slide-5">
             <div class="contain reveal">
                 <div class="imgCorner corner-left sm"><img src="./bouquet-4.png" alt=""></div>
-                                <h3 class="timeline-title">برنامج الحفل</h3>
+                <h3 class="timeline-title">برنامج الحفل</h3>
                 <div class="timeline-container">
                     <div class="timeline">
                         <div class="timeline-item">
@@ -296,7 +290,7 @@
         <div class="slide-6">
             <div class="contain reveal">
                 <div class="imgCorner corner-right sm"><img src="./bouquet-5.png" alt=""></div>
-                                <div class="wishes-container">
+                <div class="wishes-container">
                     <h3 class="wishes-title">كلمة للعروسين</h3>
                     <p class="wishes-subtitle">شاركنا بأمنية أو رسالة مباركة</p>
                     <form class="wishes-form" id="msgForm">
@@ -330,7 +324,8 @@
         <div class="slide-7">
             <div class="contain reveal">
                 <hr>
-                <p>عبدالله &amp; ميرة<br><span dir="ltr">7.11.2026</span><br><i class="bi bi-heart-fill heart-ico"></i></p>
+                <p>عبدالله &amp; ميرة<br><span dir="ltr">7.11.2026</span><br><i class="bi bi-heart-fill heart-ico"></i>
+                </p>
             </div>
         </div>
     </div>
