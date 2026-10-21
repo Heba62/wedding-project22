@@ -1212,7 +1212,7 @@ body {
 /* فتح الستارة: كل نصف يتجمّع بترتيب عند جانبه (حركة متماثلة وهادئة) */
 .curtain-half {
   /* الصورة بنسبتها الأصلية ومتمركزة، والنصفين يكوّنوا صورة وحدة */
-  background-size: max(100vw, 66.667vh) auto;
+  background-size: max(100vw, 68.667vh) auto;
   transition: transform 2.3s cubic-bezier(0.65, 0, 0.35, 1);
 }
 .curtain-half.left {
