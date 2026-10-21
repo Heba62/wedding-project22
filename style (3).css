@@ -32,7 +32,7 @@ html {
 body,
 .welcome-overlay {
   direction: rtl;
-  font-family: "Amiri", "Aref Ruqaa", serif;
+  font-family: "Amiri", serif;
 }
 
 .wedding {
@@ -41,7 +41,7 @@ body,
     no-repeat center center fixed;
   /* background: linear-gradient(180deg, var(--ivory) 0%, var(--peach-soft) 45%, var(--ivory) 100%); */
 
-  font-family: "Amiri", "Aref Ruqaa", serif;
+  font-family: "Amiri", serif;
   max-width: 600px;
   margin: 0 auto;
   box-shadow: 0 0 20px rgba(90, 61, 55, 0.18);
@@ -667,7 +667,7 @@ body.no-scroll {
 }
 
 .calendar-widget {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: "Amiri", serif;
     color: var(--text-color);
     padding: 20px;
     margin: 0 auto;
@@ -804,8 +804,8 @@ body {  background: url("https://i.pinimg.com/736x/82/31/66/82316614373bf435be60
 
 /* ===== ترتيب الخطوط والتنسيق ===== */
 :root {
-  --font-title: "Aref Ruqaa", "Amiri", serif;   /* للأسماء والعناوين */
-  --font-body: "Amiri", "Aref Ruqaa", serif;    /* للنصوص الطويلة (أوضح للقراءة) */
+  --font-title: "Amiri", serif;   /* للأسماء والعناوين */
+  --font-body: "Amiri", serif;    /* للنصوص الطويلة (أوضح للقراءة) */
 }
 
 input, textarea, select, button, .modal-content { font-family: var(--font-body); }
@@ -819,7 +819,7 @@ input, textarea, select, button, .modal-content { font-family: var(--font-body);
   color: var(--mocha);
   margin-bottom: 0;
 }
-.familyName { font-family: "Playfair Display", Georgia, serif; line-height: 1.1; direction: ltr; }
+.familyName { font-family: "Amiri", serif; line-height: 1.1; direction: ltr; }
 .slide-1 .timeWedding { margin-top: 10px; font-family: var(--font-body); font-size: 19px; }
 .timeWedding p { margin: 0; line-height: 1.5; }
 .timeWedding { justify-content: center; }
@@ -830,10 +830,10 @@ input, textarea, select, button, .modal-content { font-family: var(--font-body);
 }
 .section-title { font-size: 30px; margin-bottom: 6px; }
 .countdown-container h3 { font-family: var(--font-title); font-size: 20px; }
-.time-box span { font-family: "Playfair Display", Georgia, serif; }
+.time-box span { font-family: "Amiri", serif; }
 .timeline-item .event-desc, .wishes-subtitle, .wish-text, .wish-name { font-family: var(--font-body); }
 .timeline-item .event-desc { font-size: 17px; }
-.timeline-item .time { font-family: "Playfair Display", Georgia, serif; }
+.timeline-item .time { font-family: "Amiri", serif; }
 
 /* بطاقة الدعوة: كل الأحجام نسبية لعرض البطاقة فتبقى المحتويات داخل الورقة */
 .slide-2 {
@@ -937,29 +937,72 @@ body { overflow-x: hidden; }
 .timeline-item .time { white-space: nowrap; }
 
 
-/* ===== ستارة الترحيب ===== */
+/* ===== ستارة الترحيب (بيج فاتح) ===== */
 .welcome-overlay.curtain {
   backdrop-filter: none;
   background: transparent;
   display: block;
   cursor: pointer;
   overflow: hidden;
-  transition: visibility 0s linear 2.2s;
+  transition: visibility 0s linear 2.4s;
 }
 .curtain-half {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 50%;
-  background: url("./curtain.jpg") no-repeat;
+  width: 50.4%;
+  background-image: url("./curtain-beige.jpg");
+  background-repeat: no-repeat;
   background-size: 100vw 100%;
-  transition: transform 2.2s cubic-bezier(.65, .05, .3, 1);
+  transition: transform 2.3s cubic-bezier(.65, .05, .3, 1);
   will-change: transform;
 }
-.curtain-half.left  { left: 0;  background-position: left center;  box-shadow: 6px 0 22px rgba(90, 61, 55, .35); }
-.curtain-half.right { right: 0; background-position: right center; box-shadow: -6px 0 22px rgba(90, 61, 55, .35); }
+.curtain-half.left  { left: 0;  background-position: left center;  box-shadow: 6px 0 24px rgba(120, 95, 60, .30); }
+.curtain-half.right { right: 0; background-position: right center; box-shadow: -6px 0 24px rgba(120, 95, 60, .30); }
+/* ظل الطية عند التقاء الستارتين */
+.curtain-half::after { content: ""; position: absolute; top: 0; bottom: 0; width: 16%; pointer-events: none; }
+.curtain-half.left::after  { right: 0; background: linear-gradient(270deg, rgba(125, 98, 62, .30), rgba(125, 98, 62, 0)); }
+.curtain-half.right::after { left: 0;  background: linear-gradient(90deg,  rgba(125, 98, 62, .30), rgba(125, 98, 62, 0)); }
 .welcome-overlay.open .curtain-half.left  { transform: translateX(-102%); }
 .welcome-overlay.open .curtain-half.right { transform: translateX(102%); }
+
+/* الدرابزة العلوية (مطوية بحافة مقوّسة) */
+.curtain-top {
+  --r: 22px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(64px, 13vw, 110px);
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(0 5px 6px rgba(110, 85, 55, .28));
+  transition: transform 2.3s cubic-bezier(.65, .05, .3, 1), opacity 2.3s ease;
+}
+.curtain-top::before { /* عمود الستارة */
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 7px;
+  background: linear-gradient(#f4e8cc, #cdb68a 60%, #b89f72);
+  z-index: 2;
+}
+.curtain-top i {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, rgba(140, 110, 72, 0) 0 20px, rgba(140, 110, 72, .16) 20px 24px, rgba(255, 255, 255, .22) 24px 28px, rgba(140, 110, 72, 0) 28px 40px),
+    linear-gradient(180deg, rgba(150, 120, 80, .22), rgba(255, 255, 255, .08) 70%),
+    url("./curtain-beige.jpg") center top / 100vw auto repeat-x;
+  -webkit-mask:
+    radial-gradient(circle at 50% 0, #000 calc(var(--r) - .5px), transparent var(--r)) 0 100% / calc(var(--r) * 2) var(--r) repeat-x,
+    linear-gradient(#000, #000) 0 0 / 100% calc(100% - var(--r) + 1px) no-repeat;
+          mask:
+    radial-gradient(circle at 50% 0, #000 calc(var(--r) - .5px), transparent var(--r)) 0 100% / calc(var(--r) * 2) var(--r) repeat-x,
+    linear-gradient(#000, #000) 0 0 / 100% calc(100% - var(--r) + 1px) no-repeat;
+}
+.welcome-overlay.open .curtain-top { transform: translateY(-115%); opacity: 0; }
+
 .curtain-label {
   position: absolute;
   inset: 0;
@@ -974,12 +1017,12 @@ body { overflow-x: hidden; }
   animation: pulseText 2.2s infinite ease-in-out;
 }
 .curtain-label h2 {
-  font-family: var(--font-title, "Aref Ruqaa", serif);
+  font-family: var(--font-title);
   font-size: 40px;
   color: var(--dusty-deep);
-  text-shadow: 0 1px 8px rgba(255, 255, 255, .8);
+  text-shadow: 0 1px 8px rgba(255, 255, 255, .85);
 }
-.curtain-label .click-hint { color: var(--mocha-dark); text-shadow: 0 1px 6px rgba(255, 255, 255, .8); }
+.curtain-label .click-hint { color: var(--mocha-dark); text-shadow: 0 1px 6px rgba(255, 255, 255, .85); }
 .welcome-overlay.open .curtain-label { opacity: 0; animation: none; }
 @keyframes pulseText { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
 
@@ -989,3 +1032,18 @@ body { overflow-x: hidden; }
 .imgCorner.corner-right { right: -14px; }
 .card-flower.left { left: 0; }
 .card-flower.right { right: 0; }
+
+
+/* ===== شعار الحرفين في الغلاف ===== */
+.monogram { display: block; height: clamp(220px, 30vh, 320px); width: auto; margin: 4px auto 8px; }
+
+/* ===== خط موحّد للصفحة كلها: أميري (نفس خط أسماء العائلات) ===== */
+:root { --font-title: "Amiri", serif; --font-body: "Amiri", serif; }
+body, button, input, textarea, select, .modal-content, .modal-title, .form-control, .form-select, .form-label, .btn,
+.wedding, .welcome-overlay, .calendar-widget, .time-box span, .timeline-item .time, .countdown-container h3 {
+  font-family: "Amiri", serif !important;
+}
+
+/* ===== تنويه البطاقة: أكبر وأغمق وأوضح ===== */
+.slide-2 .notice { font-size: max(3.6cqw, 14.5px) !important; line-height: 1.6; font-weight: 700; color: var(--mocha-dark) !important; }
+.slide-2 .notice strong { font-size: 1.08em; color: #4a2f29; }
