@@ -443,7 +443,9 @@ body.no-scroll {
   text-align: center;
   position: relative;
   width: 100%;
-  height: 70vh;
+  /* الغلاف يملأ الشاشة كاملة (ناقص الهوامش حواليه)، فما يبين جزء من بطاقة الدعوة تحته */
+  height: calc(100vh - 121px);
+  height: calc(100svh - 121px);
   min-height: 560px;
   overflow: hidden;
 }
