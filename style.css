@@ -17,6 +17,7 @@ html {
 }
 
 :root {
+  --app-h: 100vh; /* يتحدّث من JavaScript بارتفاع الشاشة الفعلي */
   --dusty-pink: #c68e92;
   --dusty-deep: #a8656b;
   --peach: #e8b79f;
@@ -444,8 +445,7 @@ body.no-scroll {
   position: relative;
   width: 100%;
   /* الغلاف يملأ الشاشة كاملة (ناقص الهوامش حواليه)، فما يبين جزء من بطاقة الدعوة تحته */
-  height: calc(100vh - 121px);
-  height: calc(100svh - 121px);
+  height: calc(var(--app-h) - 121px);
   min-height: 560px;
   overflow: hidden;
 }
