@@ -62,7 +62,7 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: url("./82316614373bf435be60810396cfbe22.jpg") center / cover no-repeat;
+  background: url("https://i.pinimg.com/736x/82/31/66/82316614373bf435be60810396cfbe22.jpg") center / cover no-repeat;
 }
 
 
@@ -211,7 +211,7 @@ iframe {
 }
 
 
-/* ===== صفحة الترحيب والستارة وزر الموسيقى ===== */
+/* ===== صفحة الترحيب (الستارة) وزر الموسيقى ===== */
 
 .welcome-overlay {
   direction: rtl;
@@ -232,73 +232,123 @@ iframe {
 }
 
 .welcome-overlay.curtain {
-  backdrop-filter: none;
-  background: transparent;
+  --n: 6;
+  --w: calc(50.4vw / 6);   /* عرض كل طيّة */
+  --g: 1.3vw;               /* المسافة بين الطيّات بعد التجمّع */
+  --img-w: max(100vw, 80vh);
   display: block;
+  top: 0;
+  bottom: auto;
+  /* أطول من الشاشة عشان تغطي تحت شريط سفاري (الآيفون) ولا يبين الموقع من تحت */
+  height: 120vh;
+  min-height: 0;
   cursor: pointer;
   overflow: hidden;
-  transition: visibility 0s linear 2.4s;
-  top: 0;
-  bottom: 0;
-  height: auto;
-  min-height: 100vh;
+  backdrop-filter: none;
+  background: transparent;
+  transition: opacity 0.35s ease 2.05s;
 }
 
-.curtain-half {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50.4%;
-  background-image: url("./curtain.jpg");
-  background-repeat: no-repeat;
-  will-change: transform;
-  transition: transform 2.3s cubic-bezier(0.65, 0, 0.35, 1);
-  background-color: #e8dcc9;
-  background-size: max(100vw, 75vh) auto;
-}
-
-.curtain-half.left {
-  left: 0;
-  box-shadow: 6px 0 24px rgba(120, 95, 60, 0.3);
-  transform-origin: left center;
-  background-position: calc((100vw - max(100vw, 75vh)) / 2) top;
-}
-
-.curtain-half.right {
-  right: 0;
-  box-shadow: -6px 0 24px rgba(120, 95, 60, 0.3);
-  transform-origin: right center;
-  background-position: calc((100vw - max(100vw, 75vh)) / 2 - 49.6vw) top;
-}
-
-.curtain-half::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 16%;
+.welcome-overlay.curtain.open {
+  opacity: 0;
   pointer-events: none;
 }
 
-.curtain-half.left::after {
-  right: 0;
-  background: linear-gradient(270deg, rgba(125, 98, 62, 0.3), rgba(125, 98, 62, 0));
+/* ظل خفيف على أطراف الشاشة */
+.welcome-overlay.curtain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 38%, transparent 55%, rgba(120, 90, 60, 0.22) 100%);
 }
 
-.curtain-half.right::after {
+/* عمود الستارة */
+.curtain-rod {
+  position: absolute;
+  top: 0;
   left: 0;
-  background: linear-gradient(90deg, rgba(125, 98, 62, 0.3), rgba(125, 98, 62, 0));
+  right: 0;
+  height: 14px;
+  z-index: 5;
+  background: linear-gradient(#c9b08a, #f6ead4 45%, #b39a74);
+  box-shadow: 0 6px 14px rgba(80, 55, 35, 0.35);
 }
 
-.welcome-overlay.open .curtain-half.left,
-.welcome-overlay.open .curtain-half.right {
-  transform: scaleX(0.12);
+.curtain-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.4vw;
+  z-index: 1;
+}
+
+.curtain-panel.left { left: 0; }
+.curtain-panel.right { right: 0; }
+
+/* كل طيّة شريحة من صورة الستارة، وبتتجمّع بترتيب عند الجانب */
+.curtain-panel i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: calc(var(--w) + 1px);
+  background-color: #e8dcc9;
+  background-image: url("./curtain.jpg");
+  background-repeat: no-repeat;
+  background-size: var(--img-w) auto;
+  transition: transform 1.7s cubic-bezier(0.55, 0, 0.25, 1) var(--dl);
+  will-change: transform;
+}
+
+.curtain-panel i::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  transition: opacity 1.4s ease var(--dl);
+}
+
+.curtain-panel.left i {
+  left: calc(var(--j) * var(--w));
+  transform-origin: left center;
+  background-position: calc((100vw - var(--img-w)) / 2 - var(--j) * var(--w)) top;
+}
+
+.curtain-panel.right i {
+  right: calc(var(--j) * var(--w));
+  transform-origin: right center;
+  background-position: calc((100vw - var(--img-w)) / 2 - 100vw + (var(--j) + 1) * var(--w) + 1px) top;
+}
+
+.curtain-panel.left i::before {
+  background: linear-gradient(90deg, rgba(90, 60, 40, 0.5), rgba(90, 60, 40, 0) 55%);
+}
+
+.curtain-panel.right i::before {
+  background: linear-gradient(270deg, rgba(90, 60, 40, 0.5), rgba(90, 60, 40, 0) 55%);
+}
+
+.welcome-overlay.open .curtain-panel i {
+  transform: translateX(calc(var(--j) * (var(--g) - var(--w)))) scaleX(0.36);
+}
+
+.welcome-overlay.open .curtain-panel.right i {
+  transform: translateX(calc(var(--j) * (var(--w) - var(--g)))) scaleX(0.36);
+}
+
+.welcome-overlay.open .curtain-panel i::before {
+  opacity: 0.85;
 }
 
 .curtain-label {
   position: absolute;
-  inset: 0;
-  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -306,31 +356,25 @@ iframe {
   text-align: center;
   pointer-events: none;
   transition: opacity 0.6s ease;
-  animation: pulseText 2.2s infinite ease-in-out;
 }
 
 .curtain-label h2 {
   font-family: var(--font-title);
   font-size: 40px;
   color: var(--dusty-deep);
-  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 10px rgba(255, 255, 255, 0.9);
 }
 
-.curtain-label .click-hint {
+.curtain-hint {
+  margin-top: 12px;
+  font-size: 15px;
   color: var(--mocha-dark);
-  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.9);
+  animation: pulseText 2.2s ease-in-out infinite;
 }
 
 .welcome-overlay.open .curtain-label {
   opacity: 0;
-  animation: none;
-}
-
-.click-hint {
-  margin-top: 15px;
-  font-size: 13px;
-  color: var(--text-color);
-  letter-spacing: 0.5px;
 }
 
 body.no-scroll {
@@ -1050,3 +1094,5 @@ body.no-scroll {
     transform: scale(1.04);
   }
 }
+
+
